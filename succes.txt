@@ -1,0 +1,1 @@
+si vous voyez ce fichier c'est que vous savez utiliser git
