@@ -1,0 +1,19 @@
+{ 
+  "name": "my path",
+  "lenght_unit" : "m",
+  "max_speed_unit": "km/h",
+  "segments": [ 
+      {
+          "max_speed": "70", 
+          "lenght": "500"
+      }, 
+      {
+          "max_speed": "30", 
+          "lenght": "0"
+      }, 
+      {
+          "max_speed": "90",
+          "lenght": "120"
+      }
+   ] 
+} 
