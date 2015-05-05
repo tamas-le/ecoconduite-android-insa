@@ -9,11 +9,11 @@
       }, 
       {
           "max_speed": "30", 
-          "lenght": "0"
+          "length": "0"
       }, 
       {
           "max_speed": "90",
-          "lenght": "120"
+          "length": "120"
       }
    ] 
 } 
