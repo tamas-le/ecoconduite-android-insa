@@ -12,8 +12,8 @@ import javax.swing.JFrame;
 
 
 
-public class SocketServer extends Thread
-{
+public class SocketServer extends Thread{
+	
 	private int SERVERPORT = 5657;
 	private ServerSocket serverSocket;
 	private Socket client = null;
@@ -21,16 +21,6 @@ public class SocketServer extends Thread
 	private PrintWriter mOut;
 	private OnMessageReceived messageListener;
 	
-	public static void main(String[] args)
-	{
-		// opens the window where the messages will be received and sent
-		Fenetre frame = new Fenetre();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null); // *** center the app *** 
-		frame.pack();
-		frame.setVisible(true);
-	}
-
 
 	public SocketServer(OnMessageReceived messageListener)
 	{
