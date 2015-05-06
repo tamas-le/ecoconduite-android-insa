@@ -6,10 +6,8 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 
 import Controller.Controller;
-import GUI.Window;
 
 public class EcoDriver {
 

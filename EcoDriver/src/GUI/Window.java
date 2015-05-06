@@ -18,7 +18,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import server.SocketServer;
-import server.SocketServer.OnMessageReceived;
 
 
 public class Window extends JFrame
@@ -126,8 +125,7 @@ public class Window extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				String messageText = message.getText();
-				if(messageText.toString().trim().equals(""))
-				{
+				if(messageText.toString().trim().equals("")){
 					message.setText("");
 					message.requestFocus();
 					return;
@@ -144,29 +142,7 @@ public class Window extends JFrame
 		});
 
 		startServer = new JButton("Start");
-		startServer.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				// disable the start button
-				startServer.setEnabled(false);
-				messagesArea.append("Server Started, now start Android Client");
-				// creates the object OnMessageReceived asked by the DispatcherServer
-				// constructor
-				mServer = new SocketServer(new SocketServer.OnMessageReceived()
-				{
-					@Override
-					public void messageReceived(String message)
-					{
-						System.out.println("Msg Recieved");
-						messagesArea.append("\n" + message);
-					}
-				});
-				mServer.start();
 
-			}
-		});
 
 		// the box where the user enters the text (EditText is called in
 		// Android)

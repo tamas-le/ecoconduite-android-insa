@@ -26,11 +26,11 @@ public class Speed {
 		this.acceleration_intencity = acceleration_intencity;
 	}
 	
-	public void setSpeed(int speed){
+	public synchronized void setSpeed(int speed){
 		this.speed = speed;
 	}
 	
-	public int getSpeed(){
+	public synchronized int getSpeed(){
 		return this.speed;
 	}
 	
