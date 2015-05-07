@@ -1,0 +1,5 @@
+Lancer matlab et executer le script "generate_profil.m"
+Si il n'y a pas d'erreur les variables "pp" , "pp2" et "pp3" doivent se trouver dans le workplace
+Dans matlab tout est vecteur, même les polynomes ! 
+	ex : p(x)=x²+2x+3 sera représenté p = [1 2 3]
+les pp correspondent à nos profils, ce sont des polynomes de degré 5. 
