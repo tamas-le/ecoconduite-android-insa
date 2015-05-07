@@ -8,61 +8,58 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import javax.swing.JFrame;
+import Controller.Controller;
 
 
 
-public class SocketServer extends Thread
-{
+public class SocketServer extends Thread{
+	
+	private Controller controller;
 	private int SERVERPORT = 5657;
 	private ServerSocket serverSocket;
 	private Socket client = null;
 	private boolean running = false;
 	private PrintWriter mOut;
-	private OnMessageReceived messageListener;
 	
-	public static void main(String[] args)
-	{
-		// opens the window where the messages will be received and sent
-		Fenetre frame = new Fenetre();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null); // *** center the app *** 
-		frame.pack();
-		frame.setVisible(true);
+
+	public SocketServer(Controller controller){		
+		this.controller = controller;
 	}
 
-
-	public SocketServer(OnMessageReceived messageListener)
-	{
-		this.messageListener = messageListener;
+	public void messageReceived(String message){
+		System.out.println("Msg Recieved");
+		this.controller.processSpeedRequest(message);
 	}
 
-
-	public void sendMessage(String message)
-	{
-		try
-		{
-			if (mOut != null && !mOut.checkError())
-			{
+	public void sendMessage(String message){
+		
+		try{
+			if (mOut != null && !mOut.checkError()){
 				System.out.println(message);
 				// Here you can connect with database or else you can do what you want with static message
 				mOut.println(message);
 				mOut.flush();
 			}
 		}
-		catch (Exception e)
-		{
+		catch (Exception e){
+			
 		}
+	}
+	
+	public void performSpeedSending(int speed){
+		String messageText = Integer.toString(speed);
+		this.sendMessage(messageText);
 	}
 
 
 	@Override
-	public void run()
-	{
+	public void run(){
+		
 		super.run();
 		running = true;
-		try
-		{
+		
+		try{
+			
 			System.out.println("PA: Connecting...");
 
 			// create a server socket. A server socket waits for requests to
@@ -71,8 +68,7 @@ public class SocketServer extends Thread
 
 			// create client socket... the method accept() listens for a
 			// connection to be made to this socket and accepts it.
-			try
-			{
+			try{
 				client = serverSocket.accept();
 				System.out.println("S: Receiving...");
 				// sends the message to the client
@@ -83,41 +79,32 @@ public class SocketServer extends Thread
 				BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 				
 				sendMessage("Server connected with Android Client now you can chat with socket server.");
+				sendMessage(this.controller.getPath());
 				
 				// in this while we wait to receive messages from client (it's an infinite loop)
 				// this while it's like a listener for messages
-				while (running)
-				{
+				while (running){
 					String message = in.readLine();
-					if (message != null && messageListener != null)
-					{
+					if (message != null){
 						// call the method messageReceived from ServerBoard class
-						messageListener.messageReceived(message);
+						this.messageReceived(message);
 					}
 				}
 			}
-			catch (Exception e)
-			{
+			catch (Exception e){
 				System.out.println("PA: Error: "+e.getMessage());
 				e.printStackTrace();
 			}
-			finally
-			{
+			finally{
 				client.close();
 				System.out.println("PA: Done.");
 			}
 		}
-		catch (Exception e)
-		{
+		catch (Exception e){
 			System.out.println("PA: Error");
 			e.printStackTrace();
 		}
 
-	}
-
-	public interface OnMessageReceived
-	{
-		public void messageReceived(String message);
 	}
 
 }
