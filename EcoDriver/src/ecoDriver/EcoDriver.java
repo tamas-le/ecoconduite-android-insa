@@ -14,7 +14,7 @@ public class EcoDriver {
 	
 	public static void main(String[] args){
 		
-		
+		/*
 		 JFileChooser chooser = new JFileChooser();
 		    int result = chooser.showOpenDialog(null);
 		    switch (result) {
@@ -29,9 +29,9 @@ public class EcoDriver {
 			    	  for(int i=0; i<lines_list.size(); i++){
 				    	   path = path.concat(lines_list.get(i));
 				      }
-			    	  
-			    	  Controller controller = new Controller(path);
-			    	  
+			    	  */
+			    	  Controller controller = new Controller();
+			   /* 	  
 			      }catch(Exception e){
 			    	  System.out.println("Fichier inconnu...");
 			      }
@@ -45,6 +45,8 @@ public class EcoDriver {
 			      System.out.println("Error");
 			      break;
 		    }
+		    
+		    */
 		
 		
 		

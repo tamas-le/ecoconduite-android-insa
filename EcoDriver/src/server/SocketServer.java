@@ -46,8 +46,8 @@ public class SocketServer extends Thread{
 		}
 	}
 	
-	public void performSpeedSending(int speed){
-		String messageText = Integer.toString(speed);
+	public void performSpeedSending(float speed){
+		String messageText = Float.toString(speed);
 		this.sendMessage(messageText);
 	}
 
