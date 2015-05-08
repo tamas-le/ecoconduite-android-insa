@@ -6,58 +6,60 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import server.SocketServer;
+import Controller.Controller;
 
 
 public class Window extends JFrame
 {
 	private static final long serialVersionUID = 1L;
-	private JTextArea messagesArea;
-	private JButton sendButton;
-	private JTextField message;
-	private JButton startServer;
-	private SocketServer mServer;
-	
-	
+
+	private Controller controller;
 	private JPanel speed_control_jpanel;
 	
 	private JLabel speed_jlabel;
 	private JTextField acceleration_intensity_jtextfield;
 	private JButton send_acceleration_intensity_button;
 	
-	
-	private String path;
 
 	
-	public Window(String path){
-
+	public Window(Controller controller){
+	
 		super("EcoDriver");
 		
-		this.path = path;
+		this.controller = controller;
+
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null); // *** center the app ***
 		
-		/*
 		
-		this.speed_jlabel = new JLabel("0 km/h");
+		this.speed_jlabel = new JLabel("0.0 km/h");
 		this.speed_jlabel.setFont(new Font("Verdana", 1, 100));
 		this.speed_jlabel.setHorizontalAlignment(JLabel.CENTER);
 		this.speed_jlabel.setVerticalAlignment(JLabel.CENTER);
 		
 		this.acceleration_intensity_jtextfield = new JTextField();
 		this.send_acceleration_intensity_button = new JButton("Go");
+		
+		this.send_acceleration_intensity_button.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				
+				controller.processAccelerationIntensitymodification(Float.parseFloat(acceleration_intensity_jtextfield.getText()));
+				acceleration_intensity_jtextfield.setText("");
+			}
+		});
+		
+		
 		
 		
 		this.speed_control_jpanel = new JPanel(new GridBagLayout());
@@ -93,78 +95,16 @@ public class Window extends JFrame
         
         this.add(this.speed_control_jpanel);
         
-        //this.pack();
         this.setSize(800, 500);
 	    this.setVisible(true);
         
-        
-	    
-	    
-	    */
-	    
-	    
-		
-		
-
-		JPanel panelFields = new JPanel();
-		panelFields.setLayout(new BoxLayout(panelFields, BoxLayout.X_AXIS));
-
-		JPanel panelFields2 = new JPanel();
-		panelFields2.setLayout(new BoxLayout(panelFields2, BoxLayout.X_AXIS));
-
-		
-		messagesArea = new JTextArea();
-		messagesArea.setColumns(30);
-		messagesArea.setRows(10);
-		messagesArea.setEditable(false);
-		
-		sendButton = new JButton("Send");
-		sendButton.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				String messageText = message.getText();
-				if(messageText.toString().trim().equals("")){
-					message.setText("");
-					message.requestFocus();
-					return;
-				}
-				// add message to the message area
-				//messageText = "Server: " + messageText;
-				messageText = path;
-				messagesArea.append("\n"+messageText);
-				// send the message to the client
-				mServer.sendMessage(messageText);
-				// clear text
-				message.setText("");
-			}
-		});
-
-		startServer = new JButton("Start");
-
-
-		// the box where the user enters the text (EditText is called in
-		// Android)
-		message = new JTextField();
-		message.setSize(200, 20);
-		message.setScrollOffset(1);
-
-		// add the buttons and the text fields to the panel
-		JScrollPane sp = new JScrollPane(messagesArea);
-		panelFields.add(sp);
-		panelFields.add(startServer);
-
-		panelFields2.add(message);
-		panelFields2.add(sendButton);
-
-		getContentPane().add(panelFields);
-		getContentPane().add(panelFields2);
-
-		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-
-		 this.setSize(800, 500);
-		 this.setVisible(true);
+	   	
+	}
 	
+	public void processSpeedModification(float speed){
+		
+		DecimalFormat df = new DecimalFormat("##.#");
+		df.setRoundingMode(RoundingMode.DOWN);
+		this.speed_jlabel.setText(df.format(speed) + " km/h");
 	}
 }
