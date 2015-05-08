@@ -3,3 +3,18 @@ Si il n'y a pas d'erreur les variables "pp" , "pp2" et "pp3" doivent se trouver 
 Dans matlab tout est vecteur, même les polynomes ! 
 	ex : p(x)=x²+2x+3 sera représenté p = [1 2 3]
 les pp correspondent à nos profils, ce sont des polynomes de degré 5. 
+
+
+Pour une vitesse dans [19.38,10.8]
+
+profil = [-0,000101873073634283	0,158091494458169	-98,1295067226028	30453,7914389142	-4725333,29976574	293265928,960533
+ ]
+
+t est dans [306.6,316.1]
+
+Pour une vitesse dans [10.8,0]
+
+profil =[-0,000335451321012932	0,134571979214965	-21,5589007787433	1724,07388051862	-68825,5779506290	1097273,85599249
+]
+
+t est dans [72.5,83.7]

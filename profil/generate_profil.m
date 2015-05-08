@@ -26,8 +26,8 @@ M2 = csvread('data2.csv',1,1);
     
 % Zoom sur la première zone interessante     
     
-    tzoom = t1(725:828);
-    vzoom = v1(725:828);
+    tzoom = t1(725:840);
+    vzoom = v1(725:840);
 
     figure(3)
     plot(tzoom,vzoom,'.')
@@ -62,6 +62,11 @@ vzoom3 = v2(3066:3175);
     pp3=polyfit(tzoom3,vzoom3,5);
     approx3=polyval(pp3,tzoom3);
     plot(tzoom3,approx3)
+    
+    
+    figure(6)
+    test=polyval(pp3,t2);
+    plot(t2,test)
 
 
 
