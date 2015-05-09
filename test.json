@@ -1,0 +1,39 @@
+{
+   "roads":[
+      {
+         "name":"Route de test 1",
+         "length_unit":"m",
+         "max_speed_unit":"km/h",
+         "segments":[
+            {
+               "max_speed":"30",
+               "length":"2000"
+            },
+            {
+               "max_speed":"0",
+               "length":"0"
+            }
+         ]
+      }, 
+      {
+         "name":"Route de test 2",
+         "length_unit":"m",
+         "max_speed_unit":"km/h",
+         "segments":[
+            {
+               "max_speed":"50",
+               "length":"200"
+            },
+            {
+               "max_speed":"30",
+               "length":"100"
+            },
+            {
+               "max_speed":"0",
+               "length":"0"
+            }
+         ]
+      }
+
+   ]
+}

@@ -67,7 +67,15 @@ vzoom3 = v2(3066:3175);
     figure(6)
     test=polyval(pp3,t2);
     plot(t2,test)
-
+    
+    syms t
+    
+    profil1 = poly2sym(pp,t)
+    profil2 = poly2sym(pp3,t)
+    
+    inverse1 = finverse(profil1)
+    inverse2 = finverse(profil2)
+    
 
 
     
