@@ -38,8 +38,8 @@ M2 = csvread('data2.csv',1,1);
     
 % Zoom sur la seconde zone interessante
 
-tzoom2 = t1(1766:1853);
-vzoom2 = v1(1766:1853);
+tzoom2 = t1(1184:1274);
+vzoom2 = v1(1184:1274);
 
     figure(4)
     plot(tzoom2,vzoom2,'.')
