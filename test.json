@@ -22,11 +22,11 @@
          "segments":[
             {
                "max_speed":"50",
-               "length":"200"
+               "length":"600"
             },
             {
                "max_speed":"30",
-               "length":"100"
+               "length":"300"
             },
             {
                "max_speed":"0",
