@@ -65,7 +65,13 @@ title('Profil de ralentissement')
  syms t x
  profil1 = poly2sym(pp,t)
  profil2 = poly2sym(pp3,t)
+ 
+ figure(6)
+ x2=t2(3118:3159);
+ y2=polyval(pp3,x2);
+plot(x2,y2);
 
+test=trapz(x2,y2)
  
  
 
