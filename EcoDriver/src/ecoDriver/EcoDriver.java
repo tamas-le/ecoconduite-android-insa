@@ -30,7 +30,7 @@ public class EcoDriver {
 				    	   path = path.concat(lines_list.get(i));
 				      }
 			    	  
-			    	 Controller controller = new Controller();
+			    	 Controller controller = new Controller(path);
 			   	  
 			      }catch(Exception e){
 			    	  System.out.println("Fichier inconnu...");

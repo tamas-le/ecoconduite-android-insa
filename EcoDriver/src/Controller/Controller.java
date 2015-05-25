@@ -11,12 +11,12 @@ public class Controller {
 	private String path;
 	private Speed speed;
 	
-	public Controller(){
+	public Controller(String path){
 		// On lance le server
 		this.speed = new Speed(5.5f, 70.0f);
-		//this.path = path;
+		this.path = path;
 		this.server = new SocketServer(this);
-		//this.server.start();
+		this.server.start();
 		
 		// On crée la fenêtre
 		this.window = new Window(this);
