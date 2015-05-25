@@ -66,6 +66,12 @@ title('Profil de ralentissement')
  profil1 = poly2sym(pp,t)
  profil2 = poly2sym(pp3,t)
  
+ csvwrite('profil1.csv',approx);
+ csvwrite('t1.csv',tzoom);
+ csvwrite('pofil2.csv',approx3);
+ csvwrite('t2.csv',tzoom3);
+ 
+ 
  figure(6)
  x2=t2(3118:3159);
  y2=polyval(pp3,x2);
