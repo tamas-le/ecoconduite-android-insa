@@ -1,6 +1,5 @@
 package Controller;
 
-import java.net.ServerSocket;
 
 import model.Speed;
 import server.SocketServer;
@@ -12,12 +11,12 @@ public class Controller {
 	private String path;
 	private Speed speed;
 	
-	public Controller(){
+	public Controller(String path){
 		// On lance le server
-		this.speed = new Speed(5, 70);
-		//this.path = path;
+		this.speed = new Speed(5.5f, 70.0f);
+		this.path = path;
 		this.server = new SocketServer(this);
-		//this.server.start();
+		this.server.start();
 		
 		// On crée la fenêtre
 		this.window = new Window(this);
@@ -31,7 +30,7 @@ public class Controller {
 		//attente de modification sur acceleration intencity
 		//On modifie la vitesse mais si on a une modification d'acceleration intensity on change de dinamyqieu
 		
-		float current_speed = 0;
+		float current_speed = 0.0f;
 		
 		while(true){
 			try {
@@ -43,8 +42,6 @@ public class Controller {
 						(this.speed.getMaxAcceletation())*0.5f
 						)
 						+ this.speed.getSpeed();
-				
-				System.out.println(current_speed);
 
 				if(current_speed > this.speed.getMaxSpeed()){
 					current_speed = this.speed.getMaxSpeed();
