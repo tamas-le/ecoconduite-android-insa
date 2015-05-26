@@ -47,9 +47,9 @@ figure(4);
     pp=polyfit(tzoom,vzoom,5);
     approx=polyval(pp,tzoom);
     plot(tzoom,approx,'r')
-     xlabel('temps en secondes') % x-axis label
-ylabel('vitesse en km/h') % y-axis label
-title('Profil d''arret')
+    xlabel('temps en secondes') % x-axis label
+    ylabel('vitesse en km/h') % y-axis label
+    title('Profil d''arret')
 
 figure(5)
     plot(tzoom3,vzoom3,'.')
@@ -60,4 +60,16 @@ figure(5)
      xlabel('temps en secondes') % x-axis label
 ylabel('vitesse en km/h') % y-axis label
 title('Profil de ralentissement')
+
+
+ syms t x
+ profil1 = poly2sym(pp,t)
+ profil2 = poly2sym(pp3,t)
+
+ 
+ 
+
+
+
+
 

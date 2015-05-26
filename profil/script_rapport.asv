@@ -15,25 +15,26 @@ v1=v1*3,6;v2=v2*3,6; % on convertit les m/s en km/h
 
 figure(1);
 
-subplot(2,2,1), plot(t1,v1);
+subplot(1,2,1), plot(t1,v1);
 title('2014-02-24 18h17')
 xlabel('temps en secondes') % x-axis label
 ylabel('vitesse en km/h') % y-axis label
-subplot(2,2,2), plot(t2,v2);
+subplot(1,2,2), plot(t2,v2);
 title('2014-02-24 18h37')
 xlabel('temps en secondes') % x-axis label
 ylabel('vitesse en km/h') % y-axis label
 
 figure(2);
 
- tzoom = t1(725:830);
- vzoom = v1(725:830);
+ tzoom = t1(725:835);
+ vzoom = v1(725:835);
  
  plot(tzoom,vzoom,'.');
  xlabel('temps en secondes') % x-axis label
 ylabel('vitesse en km/h') % y-axis label
  
 figure(3);
+
 tzoom3 = t2(3066:3170);
 vzoom3 = v2(3066:3170);
 plot(tzoom3,vzoom3,'.');
@@ -41,10 +42,41 @@ xlabel('temps en secondes') % x-axis label
 ylabel('vitesse en km/h') % y-axis label
 
 figure(4);
+    plot(tzoom,vzoom,'.')
+    hold on
+    pp=polyfit(tzoom,vzoom,5);
+    approx=polyval(pp,tzoom);
+    plot(tzoom,approx,'r')
+    xlabel('temps en secondes') % x-axis label
+    ylabel('vitesse en km/h') % y-axis label
+    title('Profil d''arret')
 
-p1=polyfit(tzoom,vzoom,5);
+figure(5)
+    plot(tzoom3,vzoom3,'.')
+    hold on
+    pp3=polyfit(tzoom3,vzoom3,5);
+    approx3=polyval(pp3,tzoom3);
+    plot(tzoom3,approx3,'r')
+     xlabel('temps en secondes') % x-axis label
+ylabel('vitesse en km/h') % y-axis label
+title('Profil de ralentissement')
 
 
-    
+ syms t x
+ profil1 = poly2sym(pp,t)
+ profil2 = poly2sym(pp3,t)
+ 
+ profil1=subs(profil1,t,x-63.2);
+ profil2=subs(profil2,t,x-306.6);
+ 
+ ppfinal1=sym2poly(profil1);
+ ppfinal2=sym2poly(profil2);
+ 
+ 
+ tv=[1:
+
+
+
+
 
 
