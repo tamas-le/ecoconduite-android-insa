@@ -1,5 +1,0 @@
-les fichiers profil contiennent les valeurs des vitesses
-les fichiers t contiennent leur temps respectifs
-
-le profil 1 va de [58.42,33.08] pour les vitesses
-le profil 2 va jusqu'à 0. 
