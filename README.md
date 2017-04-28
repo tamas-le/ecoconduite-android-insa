@@ -8,4 +8,3 @@ Ce projet contient le code et la documentation relative à notre projet tutoré 
 
 Enfin le fichier test.json est le fichier utilisé pour échanger les routes.
 
-En cas de question, contactez-moi : tamas-le@etud.insa-toulouse.fr
